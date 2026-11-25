@@ -31,7 +31,9 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 .band{position:absolute;left:0;right:0;top:39.4%;height:29.4%;overflow:hidden}
 .band .row{display:flex;gap:.55em;height:100%;will-change:transform}
 .band .card{flex:0 0 29.4em;height:100%;background-repeat:no-repeat}
-.cover .arrow{position:absolute;right:6.5%;bottom:5.6%;width:9.5%;height:auto;overflow:visible;pointer-events:none}
+.cover .arrow{position:absolute;right:6.5%;bottom:4.6%;width:9.5%;padding:1% 0;background:none;border:0;cursor:pointer;transition:transform .25s}
+.cover .arrow:hover{transform:translateX(.6em)}
+.cover .arrow svg{display:block;width:100%;height:auto;overflow:visible}
 
 /* ---------- trend slides ---------- */
 .copy{position:absolute;left:7.6%;right:7.6%;top:7.4%;font-size:2.28em;line-height:1.3;font-weight:300;text-align:justify;pointer-events:none}
@@ -55,13 +57,13 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 .end .gh{position:absolute;top:42%;left:0;right:0;height:1px;background:rgba(255,255,255,.16)}
 .end h2{position:absolute;left:13.4%;top:10%;font-size:7.4em;font-weight:300;line-height:1.08;text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
 .end p{position:absolute;left:13.4%;width:55%;top:50.4%;font-size:3.55em;line-height:1.24;font-weight:300;text-align:justify}
-.cta{position:absolute;left:13.4%;top:83.6%;font-size:3.6em;font-weight:300;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.cta{position:absolute;left:13.4%;top:83.6%;font:300 3.6em/1.16 "Lexend","Helvetica Neue",Arial,sans-serif;color:#fff;background:none;border:0;padding:0;text-transform:uppercase;cursor:pointer;white-space:nowrap}
 .cta:hover{animation:wig .5s ease-in-out}
 @keyframes wig{0%{transform:rotate(0)}33%{transform:rotate(-2deg)}66%{transform:rotate(2deg)}100%{transform:rotate(0)}}
 .cta svg{position:absolute;left:-20%;top:-62%;width:150%;height:220%;overflow:visible;pointer-events:none}
 .cta path{fill:none;stroke:#2d6ee8;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
 .end.on .cta path{stroke-dashoffset:0;transition:stroke-dashoffset 1.1s cubic-bezier(.6,0,.2,1) .35s}
-.brand{position:absolute;right:6.6%;top:84.6%;font-size:2.7em;font-weight:500;letter-spacing:.18em}
+.brand{position:absolute;right:6.6%;top:84.6%;font:500 2.7em/1.16 "Lexend","Helvetica Neue",Arial,sans-serif;letter-spacing:.18em;color:#fff;background:none;border:0;padding:0;cursor:pointer}
 
 /* ---------- chrome ---------- */
 .nav{position:absolute;top:50%;width:6.4em;height:6.4em;margin-top:-3.2em;border-radius:50%;border:0;background:rgba(255,255,255,.88);box-shadow:0 .3em 1.2em rgba(0,0,0,.12);z-index:5;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);opacity:0;transition:opacity .3s,transform .15s;-webkit-tap-highlight-color:transparent}
@@ -75,10 +77,85 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 #dots button.act{background:#fff;transform:scale(1.25)}
 #post.light #dots button{background:rgba(0,0,0,.18)}
 #post.light #dots button.act{background:var(--ink)}
-#lang{position:absolute;top:2%;left:50%;transform:translateX(-50%);z-index:6;display:flex;padding:.35em;gap:.2em;border-radius:3em;background:rgba(255,255,255,.88);box-shadow:0 .3em 1.2em rgba(0,0,0,.12);cursor:default}
+#topbar{position:absolute;top:2%;left:50%;transform:translateX(-50%);z-index:6;display:flex;gap:.8em;align-items:center}
+#openMat{font:500 1.5em/1 "Lexend","Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;border:0;border-radius:2em;padding:.8em 1.3em;background:var(--accent);color:#fff;cursor:pointer;box-shadow:0 .3em 1.2em rgba(0,0,0,.12);transition:transform .15s,background .25s;white-space:nowrap}
+#openMat:hover{background:#2552c4}#openMat:active{transform:scale(.95)}
+#lang{display:flex;padding:.35em;gap:.2em;border-radius:3em;background:rgba(255,255,255,.88);box-shadow:0 .3em 1.2em rgba(0,0,0,.12);cursor:default}
 #lang button{font:500 1.5em/1 "Lexend","Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;border:0;border-radius:2em;padding:.45em .85em;background:transparent;color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
 #lang button.act{background:var(--accent);color:#fff}
-#lang button:focus-visible,.nav:focus-visible,#dots button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#lang button:focus-visible,.nav:focus-visible,#dots button:focus-visible,#openMat:focus-visible,.cta:focus-visible,.brand:focus-visible,.cover .arrow:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- matrícula (modal; px-based so it stays readable on phones) ---------- */
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(21,21,21,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);user-select:text;-webkit-user-select:text;animation:fadeIn .25s ease}
+.modal[hidden]{display:none}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
+.mbox{position:relative;width:100%;max-width:640px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain;background:var(--paper);color:var(--ink);border-radius:18px;padding:32px 32px 28px;box-shadow:0 24px 60px rgba(0,0,0,.25);animation:rise .35s cubic-bezier(.2,.75,.2,1);font-size:15px;line-height:1.45}
+.mclose{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:0;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.mclose svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.mtop{display:flex;align-items:center;gap:14px;margin-right:48px}
+.mlang{display:flex;gap:2px;background:#e7e8ea;border-radius:20px;padding:3px}
+.mlang button{border:0;background:transparent;border-radius:16px;padding:4px 10px;font:500 12px "Lexend",sans-serif;letter-spacing:.08em;cursor:pointer;color:#555}
+.mlang button.act{background:var(--accent);color:#fff}
+.mkick{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.mbox h3{font-size:30px;font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;margin:6px 48px 14px 0}
+.mbox h4{font-size:17px;font-weight:500;margin-bottom:8px}
+.mintro{font-weight:300;color:#3a3a3a;margin-bottom:18px}
+.mnote{background:#fff6d6;border:1px solid #f2c200;border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:14px}
+.mtabs{display:flex;gap:6px;margin-bottom:18px;background:#e7e8ea;border-radius:12px;padding:4px}
+.mtabs[hidden]{display:none}
+.mtabs button{flex:1;border:0;background:transparent;border-radius:9px;padding:9px 10px;font:500 14px "Lexend",sans-serif;color:#555;cursor:pointer}
+.mtabs button.act{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.mtabs b{display:inline-block;min-width:20px;padding:1px 6px;border-radius:10px;background:var(--accent);color:#fff;font-size:12px}
+.mtabs b:empty{display:none}
+fieldset{border:0;margin-bottom:18px}
+legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--accent);margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.f{display:flex;flex-direction:column;gap:5px;font-size:13px;color:#444;min-width:0}
+.f.wide{grid-column:1/-1}
+.f input,.f select,.f textarea{font:400 15px "Lexend",sans-serif;color:var(--ink);background:#fff;border:1px solid #d5d7db;border-radius:10px;padding:10px 12px;width:100%;min-width:0;transition:border-color .2s,box-shadow .2s}
+.f textarea{resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(47,98,224,.15)}
+.f.bad input,.f.bad select{border-color:#c62f2f}
+.f .msg,.chk .msg{color:#c62f2f;font-size:12px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#444;margin:2px 0 4px;cursor:pointer;flex-wrap:wrap}
+.chk input{width:18px;height:18px;margin-top:1px;accent-color:var(--accent);flex:none}
+.chk span{flex:1}
+.chk .msg{flex-basis:100%;padding-left:28px}
+.mact{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.btnp,.btns{font:500 15px "Lexend",sans-serif;border-radius:24px;padding:12px 22px;cursor:pointer;border:0;transition:background .2s,transform .15s}
+.btnp{background:var(--accent);color:#fff}.btnp:hover{background:#2552c4}
+.btnp:disabled{opacity:.6;cursor:progress}
+.btns{background:#fff;color:var(--ink);border:1px solid #d5d7db}.btns:hover{background:#f0f1f3}
+.btnp:active,.btns:active{transform:scale(.97)}
+.btns:disabled{opacity:.5;cursor:not-allowed}
+.merr{color:#c62f2f;margin-top:12px;font-size:14px;text-align:right}
+.done{text-align:center;padding:10px 0 4px}
+.done[hidden]{display:none}
+.tick{width:64px;height:64px;border-radius:50%;background:var(--accent);margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.tick svg{width:32px;height:32px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.done strong{font-weight:500;color:var(--accent);letter-spacing:.06em}
+.done .sub{font-weight:300;color:#555;font-size:14px;margin-top:4px}
+.done .mact{justify-content:center}
+#mine{margin-top:24px;border-top:1px solid #dcdde0;padding-top:18px}
+#mine[hidden],#paneAdmin[hidden],#paneForm[hidden]{display:none}
+.list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.list li{background:#fff;border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:start;font-size:14px}
+.list .nm{font-weight:500}
+.list .meta{color:#666;font-size:13px;grid-column:1/2;overflow-wrap:anywhere}
+.list .meta a{color:var(--accent)}
+.pill{font-size:12px;border-radius:20px;padding:3px 10px;white-space:nowrap;grid-row:1;grid-column:2}
+.pill.pend{background:#fff1c2;color:#7a5b00}.pill.ok{background:#d8f0dc;color:#1f6b2c}.pill.no{background:#fbdcdc;color:#8a2020}
+.list select{font:400 13px "Lexend",sans-serif;border:1px solid #d5d7db;border-radius:8px;padding:5px 8px;background:#fff;grid-row:1;grid-column:2}
+.list .empty{display:block;color:#666;text-align:center;font-weight:300}
+.admbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.admbar .mintro{margin:0}
+@media (max-width:560px){
+  .modal{padding:0;align-items:stretch}
+  .mbox{max-width:none;max-height:none;height:100%;border-radius:0;padding:24px 18px 22px}
+  .grid{grid-template-columns:1fr}
+  .mbox h3{font-size:24px}
+}
 </style>
 </head>
 <body>
@@ -94,7 +171,7 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
       <div class="band"><div class="row"></div></div>
       <div class="t found" data-t="found"></div>
       <div class="t nts" data-t="nts"></div>
-      <svg class="arrow" viewBox="0 0 100 40"><path d="M0 20H96M78 4l18 16-18 16" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
+      <button class="arrow" id="coverNext" data-ta="next"><svg viewBox="0 0 100 40"><path d="M0 20H96M78 4l18 16-18 16" fill="none" stroke="#fff" stroke-width="1.6"/></svg></button>
     </section>
 
     <section class="slide trend" data-i="0">
@@ -131,15 +208,76 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
       <div class="gv"></div><div class="gh"></div>
       <h2 data-t="endh"></h2>
       <p data-t="endp"></p>
-      <div class="cta"><span data-t="cta"></span><svg viewBox="0 0 200 80" preserveAspectRatio="none"><path pathLength="1" d="M150 14C112 2 34 6 12 30c-18 20 22 38 82 38 62 0 104-12 102-32C194 16 140 8 96 10 58 12 28 20 22 28"/></svg></div>
-      <div class="brand">COLEGIO KOTOSH.</div>
+      <button class="cta" id="ctaBtn" type="button"><span data-t="cta"></span><svg viewBox="0 0 200 80" preserveAspectRatio="none"><path pathLength="1" d="M150 14C112 2 34 6 12 30c-18 20 22 38 82 38 62 0 104-12 102-32C194 16 140 8 96 10 58 12 28 20 22 28"/></svg></button>
+      <button class="brand" id="brandBtn" type="button" data-ta="home">COLEGIO KOTOSH.</button>
     </section>
 
   </div>
   <button class="nav" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button class="nav" id="next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
   <div id="dots"></div>
-  <div id="lang" role="group" aria-label="Idioma / Language"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+  <div id="topbar"><div id="lang" role="group" aria-label="Idioma / Language"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button></div><button type="button" id="openMat" data-t="mBtn"></button></div>
+</div>
+
+<div id="mat" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="matTitle">
+  <div class="mbox">
+    <button type="button" class="mclose" id="matClose" data-ta="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="mtop"><div class="mkick" data-t="mKick"></div><div class="mlang" role="group" aria-label="Idioma / Language"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button></div></div>
+    <h3 id="matTitle" data-t="mTitle"></h3>
+    <div class="mtabs" id="mtabs" hidden>
+      <button type="button" class="act" data-tab="form" data-t="tabForm"></button>
+      <button type="button" data-tab="admin"><span data-t="tabAdmin"></span> <b id="admCount"></b></button>
+    </div>
+
+    <div id="paneForm">
+      <p class="mintro" data-t="mIntro"></p>
+      <p class="mnote" id="matNote" hidden></p>
+      <form id="matForm" novalidate>
+        <fieldset>
+          <legend data-t="sStudent"></legend>
+          <div class="grid">
+            <label class="f"><span data-t="fNombres"></span><input name="nombres" autocomplete="off" maxlength="60" required></label>
+            <label class="f"><span data-t="fApellidos"></span><input name="apellidos" autocomplete="off" maxlength="60" required></label>
+            <label class="f"><span data-t="fDni"></span><input name="dni" inputmode="numeric" maxlength="8" required data-v="dni"></label>
+            <label class="f"><span data-t="fNac"></span><input name="nacimiento" type="date" required data-v="date"></label>
+            <label class="f"><span data-t="fGrado"></span><select name="grado" required data-opts="grades"></select></label>
+            <label class="f"><span data-t="fProc"></span><input name="procedencia" maxlength="80"></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend data-t="sGuard"></legend>
+          <div class="grid">
+            <label class="f wide"><span data-t="fApo"></span><input name="apoderado" autocomplete="name" maxlength="80" required></label>
+            <label class="f"><span data-t="fParen"></span><select name="parentesco" required data-opts="paren"></select></label>
+            <label class="f"><span data-t="fApoDni"></span><input name="apoDni" inputmode="numeric" maxlength="8" required data-v="dni"></label>
+            <label class="f"><span data-t="fTel"></span><input name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="9" required data-v="tel"></label>
+            <label class="f"><span data-t="fMail"></span><input name="correo" type="email" autocomplete="email" maxlength="80" required data-v="mail"></label>
+            <label class="f"><span data-t="fDist"></span><select name="distrito" required data-opts="dist"></select></label>
+            <label class="f wide"><span data-t="fMsg"></span><textarea name="comentario" rows="2" maxlength="400"></textarea></label>
+          </div>
+        </fieldset>
+        <label class="chk"><input type="checkbox" name="acepto" required data-v="chk"><span data-t="fOk"></span></label>
+        <div class="mact"><button type="submit" class="btnp" id="matSend" data-t="send"></button></div>
+        <p class="merr" id="matErr" hidden></p>
+      </form>
+      <div id="matDone" class="done" hidden>
+        <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h4 data-t="doneT"></h4>
+        <p><span data-t="doneP"></span> <strong id="doneCode"></strong></p>
+        <p class="sub" data-t="doneP2"></p>
+        <div class="mact"><button type="button" class="btns" id="againBtn" data-t="again"></button><button type="button" class="btnp" id="doneClose" data-t="close"></button></div>
+      </div>
+      <section id="mine" hidden>
+        <h4 data-t="mine"></h4>
+        <ul class="list" id="mineList"></ul>
+      </section>
+    </div>
+
+    <div id="paneAdmin" hidden>
+      <div class="admbar"><p class="mintro" id="admInfo"></p><button type="button" class="btns" id="csvBtn" data-t="csv"></button></div>
+      <ul class="list" id="admList"></ul>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -221,6 +359,7 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
   prev.addEventListener('click',function(){go(cur-1)});
   next.addEventListener('click',function(){go(cur+1)});
   document.addEventListener('keydown',function(e){
+    if(window.matOpen&&window.matOpen()) return;
     if(e.key==='ArrowLeft')go(cur-1);
     else if(e.key==='ArrowRight')go(cur+1);
   });
@@ -229,9 +368,8 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
   var sw=null;
   post.addEventListener('pointerdown',function(e){
     if(e.button>0) return;
-    if(e.target.closest('.nav,#dots,.piece,#lang')) return;
+    if(e.target.closest('button,a,input,select,textarea,.piece,#topbar,#dots')) return;
     sw={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),lock:null};
-    try{post.setPointerCapture(e.pointerId)}catch(_){}
   });
   post.addEventListener('pointermove',function(e){
     if(!sw||e.pointerId!==sw.id) return;
@@ -239,7 +377,7 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
     if(!sw.lock){
       if(Math.abs(dx)<6&&Math.abs(dy)<6) return;
       sw.lock=Math.abs(dx)>Math.abs(dy)?'h':'v';
-      if(sw.lock==='h') post.classList.add('dragging');
+      if(sw.lock==='h'){post.classList.add('dragging'); try{post.setPointerCapture(e.pointerId)}catch(_){}}
     }
     if(sw.lock!=='h') return;
     if((cur===0&&dx>0)||(cur===N-1&&dx<0)) dx*=.28;
@@ -307,7 +445,28 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
       h4a:"Mirada al", h4b:"futuro",
       endh:"¿Listos para<br>aprender en<br>Huánuco?",
       endp:"Las matrículas 2026 ya están abiertas. Ven a conocer nuestras aulas, a nuestros docentes y una forma de aprender que nace de nuestra tierra.",
-      cta:"Visítanos", prev:"Anterior", next:"Siguiente", slide:"Diapositiva "
+      cta:"Matricúlate", prev:"Anterior", next:"Siguiente", slide:"Diapositiva ", home:"Volver a la portada", close:"Cerrar",
+      mBtn:"Matrícula", mKick:"Admisión 2026", mTitle:"Ficha de matrícula",
+      mIntro:"Completa los datos del estudiante y de su apoderado. Te llamaremos en un máximo de 48 horas para confirmar la vacante y coordinar una visita al colegio.",
+      sStudent:"Datos del estudiante", fNombres:"Nombres", fApellidos:"Apellidos", fDni:"DNI del estudiante", fNac:"Fecha de nacimiento",
+      fGrado:"Grado al que postula", fProc:"Colegio de procedencia (opcional)",
+      sGuard:"Datos del apoderado", fApo:"Nombre completo", fParen:"Parentesco", fApoDni:"DNI del apoderado", fTel:"Celular",
+      fMail:"Correo electrónico", fDist:"Distrito", fMsg:"Comentarios (opcional)",
+      fOk:"Acepto que el colegio use estos datos solo para el proceso de matrícula.",
+      send:"Enviar solicitud", sending:"Enviando…", choose:"Elige una opción",
+      errReq:"Completa este campo.", errDni:"El DNI debe tener 8 dígitos.", errTel:"Ingresa un celular de 9 dígitos que empiece con 9.",
+      errMail:"Ingresa un correo válido.", errDate:"Ingresa una fecha válida.", errOk:"Debes aceptar para continuar.",
+      errSend:"No se pudo enviar. Inténtalo de nuevo en unos segundos.", errQuota:"Ya no hay espacio para más solicitudes. Avisa al colegio.",
+      noDb:"Esta vista no puede guardar solicitudes. Abre la página en claude.ai con tu cuenta iniciada para enviarla.",
+      noWrite:"Tu acceso a esta página es solo de lectura, así que no puedes enviar la solicitud. Pide al colegio un enlace con permiso de colaborador.",
+      doneT:"¡Solicitud enviada!", doneP:"Tu código de matrícula es", doneP2:"Guárdalo: te lo pediremos cuando te llamemos para confirmar la vacante.",
+      again:"Registrar otro estudiante", mine:"Tus solicitudes", sent:"Enviada el",
+      st_pend:"Pendiente", st_ok:"Aceptada", st_no:"Observada",
+      tabForm:"Formulario", tabAdmin:"Solicitudes recibidas", adminEmpty:"Todavía no hay solicitudes.",
+      admInfo:"Solicitudes recibidas: ", csv:"Descargar CSV", loading:"Cargando…", stale:"Todavía no se pudieron cargar los datos.",
+      grades:{i3:"Inicial · 3 años",i4:"Inicial · 4 años",i5:"Inicial · 5 años",p1:"1.° de primaria",p2:"2.° de primaria",p3:"3.° de primaria",p4:"4.° de primaria",p5:"5.° de primaria",p6:"6.° de primaria",s1:"1.° de secundaria",s2:"2.° de secundaria",s3:"3.° de secundaria",s4:"4.° de secundaria",s5:"5.° de secundaria"},
+      paren:{madre:"Madre",padre:"Padre",tutor:"Tutor(a) legal",otro:"Otro familiar"},
+      dist:{huanuco:"Huánuco",amarilis:"Amarilis",pillco:"Pillco Marca",smv:"Santa María del Valle",churubamba:"Churubamba",otro:"Otro distrito"}
     },
     en:{
       kick:"Admissions 2026", big:"Learning", arent:"With roots<br>of its own",
@@ -324,12 +483,33 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
       h4a:"Eyes on", h4b:"the future",
       endh:"Ready to<br>learn in<br>Huánuco?",
       endp:"Enrolment for 2026 is now open. Come and see our classrooms, meet our teachers and discover a way of learning rooted in our land.",
-      cta:"Visit us", prev:"Previous", next:"Next", slide:"Slide "
+      cta:"Enrol now", prev:"Previous", next:"Next", slide:"Slide ", home:"Back to the cover", close:"Close",
+      mBtn:"Enrol", mKick:"Admissions 2026", mTitle:"Enrolment form",
+      mIntro:"Fill in the student's and the parent's or guardian's details. We'll call you within 48 hours to confirm the place and arrange a visit to the school.",
+      sStudent:"Student details", fNombres:"First names", fApellidos:"Last names", fDni:"Student's ID (DNI)", fNac:"Date of birth",
+      fGrado:"Grade applying for", fProc:"Previous school (optional)",
+      sGuard:"Parent or guardian", fApo:"Full name", fParen:"Relationship", fApoDni:"Guardian's ID (DNI)", fTel:"Mobile phone",
+      fMail:"Email", fDist:"District", fMsg:"Comments (optional)",
+      fOk:"I agree that the school will use this information only for the enrolment process.",
+      send:"Submit application", sending:"Sending…", choose:"Choose an option",
+      errReq:"Please fill in this field.", errDni:"The DNI must have 8 digits.", errTel:"Enter a 9-digit mobile number starting with 9.",
+      errMail:"Enter a valid email address.", errDate:"Enter a valid date.", errOk:"You need to accept to continue.",
+      errSend:"The application couldn't be sent. Please try again in a few seconds.", errQuota:"There's no room for more applications. Please let the school know.",
+      noDb:"This view can't save applications. Open the page on claude.ai, signed in, to send it.",
+      noWrite:"You have read-only access to this page, so you can't send the application. Ask the school for a link with contributor access.",
+      doneT:"Application sent!", doneP:"Your enrolment code is", doneP2:"Keep it: we'll ask for it when we call to confirm the place.",
+      again:"Enrol another student", mine:"Your applications", sent:"Sent on",
+      st_pend:"Pending", st_ok:"Accepted", st_no:"Needs review",
+      tabForm:"Form", tabAdmin:"Applications received", adminEmpty:"No applications yet.",
+      admInfo:"Applications received: ", csv:"Download CSV", loading:"Loading…", stale:"The data couldn't be loaded yet.",
+      grades:{i3:"Pre-school · age 3",i4:"Pre-school · age 4",i5:"Kindergarten · age 5",p1:"Primary · grade 1",p2:"Primary · grade 2",p3:"Primary · grade 3",p4:"Primary · grade 4",p5:"Primary · grade 5",p6:"Primary · grade 6",s1:"Secondary · year 1",s2:"Secondary · year 2",s3:"Secondary · year 3",s4:"Secondary · year 4",s5:"Secondary · year 5"},
+      paren:{madre:"Mother",padre:"Father",tutor:"Legal guardian",otro:"Other relative"},
+      dist:{huanuco:"Huánuco",amarilis:"Amarilis",pillco:"Pillco Marca",smv:"Santa María del Valle",churubamba:"Churubamba",otro:"Other district"}
     }
   };
   var lang='es';
   try{var saved=localStorage.getItem('lang'); if(saved==='en'||saved==='es') lang=saved;}catch(_){}
-  var langBtns=[].slice.call(document.querySelectorAll('#lang button'));
+  var langBtns=[].slice.call(document.querySelectorAll('button[data-l]'));
   function setLang(l){
     lang=l; var d=T[l];
     document.documentElement.lang=l;
@@ -337,10 +517,211 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
     langBtns.forEach(function(b){var on=b.dataset.l===l; b.classList.toggle('act',on); b.setAttribute('aria-pressed',on)});
     document.getElementById('prev').setAttribute('aria-label',d.prev);
     document.getElementById('next').setAttribute('aria-label',d.next);
+    document.querySelectorAll('[data-ta]').forEach(function(el){el.setAttribute('aria-label',d[el.dataset.ta])});
+    if(window.__matLang) window.__matLang(d);
     [].forEach.call(document.querySelectorAll('#dots button'),function(b,k){b.setAttribute('aria-label',d.slide+(k+1))});
     try{localStorage.setItem('lang',l)}catch(_){}
   }
   langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+
+  /* ---------- matrícula ---------- */
+  var mat=document.getElementById('mat'), form=document.getElementById('matForm'), sendBtn=document.getElementById('matSend');
+  var paneForm=document.getElementById('paneForm'), paneAdmin=document.getElementById('paneAdmin'), mtabs=document.getElementById('mtabs');
+  var doneBox=document.getElementById('matDone'), errBox=document.getElementById('matErr'), note=document.getElementById('matNote');
+  var lastFocus=null, DB=null, UID=null, ADMIN=false, myApps=[], allDocs=[], writable=true, admState='loading', mineState='idle';
+  function L(){return T[lang]}
+  function matOpen(){return !mat.hidden}
+  window.matOpen=matOpen;
+  function openMat(){
+    lastFocus=document.activeElement; mat.hidden=false; document.body.style.overflow='hidden';
+    setTimeout(function(){var f=form.hidden?document.getElementById('doneClose'):form.querySelector('input');f&&f.focus()},60);
+  }
+  function closeMat(){mat.hidden=true; document.body.style.overflow=''; if(lastFocus&&lastFocus.focus) lastFocus.focus();}
+  document.getElementById('openMat').addEventListener('click',openMat);
+  document.getElementById('ctaBtn').addEventListener('click',openMat);
+  document.getElementById('matClose').addEventListener('click',closeMat);
+  document.getElementById('doneClose').addEventListener('click',closeMat);
+  document.getElementById('coverNext').addEventListener('click',function(){go(1)});
+  document.getElementById('brandBtn').addEventListener('click',function(){go(0)});
+  mat.addEventListener('mousedown',function(e){if(e.target===mat) closeMat()});
+  document.addEventListener('keydown',function(e){
+    if(!matOpen()) return;
+    if(e.key==='Escape'){closeMat();return}
+    if(e.key==='Tab'){ /* keep focus inside the dialog */
+      var f=[].filter.call(mat.querySelectorAll('button,input,select,textarea,a[href]'),function(x){return !x.disabled&&x.offsetParent!==null});
+      if(!f.length) return; var a=f[0], z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){z.focus();e.preventDefault()}
+      else if(!e.shiftKey&&document.activeElement===z){a.focus();e.preventDefault()}
+    }
+  });
+  [].forEach.call(mtabs.querySelectorAll('button'),function(b){b.addEventListener('click',function(){
+    [].forEach.call(mtabs.querySelectorAll('button'),function(x){x.classList.toggle('act',x===b)});
+    paneForm.hidden=b.dataset.tab!=='form'; paneAdmin.hidden=b.dataset.tab!=='admin';
+  })});
+
+  /* select options, built per language */
+  function fillSelects(d){
+    form.querySelectorAll('select[data-opts]').forEach(function(sel){
+      var v=sel.value, map=d[sel.dataset.opts]; sel.textContent='';
+      var o=document.createElement('option'); o.value=''; o.textContent=d.choose; o.disabled=true; sel.appendChild(o);
+      Object.keys(map).forEach(function(k){var o=document.createElement('option'); o.value=k; o.textContent=map[k]; sel.appendChild(o)});
+      sel.value=v||'';
+      if(!sel.value) sel.selectedIndex=0;
+    });
+  }
+
+  /* validation */
+  function check(el){
+    var v=(el.type==='checkbox')?el.checked:el.value.trim(), d=L(), m='';
+    if(el.required&&!v) m=el.type==='checkbox'?d.errOk:d.errReq;
+    else if(v&&el.dataset.v==='dni'&&!/^\d{8}$/.test(v)) m=d.errDni;
+    else if(v&&el.dataset.v==='tel'&&!/^9\d{8}$/.test(v)) m=d.errTel;
+    else if(v&&el.dataset.v==='mail'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) m=d.errMail;
+    else if(v&&el.dataset.v==='date'){var t=new Date(v+'T00:00:00'), now=new Date(); if(isNaN(t)||t>now||t.getFullYear()<now.getFullYear()-25) m=d.errDate;}
+    var box=el.closest('.f,.chk'), msg=box.querySelector('.msg');
+    box.classList.toggle('bad',!!m); el.setAttribute('aria-invalid',m?'true':'false');
+    if(m){ if(!msg){msg=document.createElement('span');msg.className='msg';box.appendChild(msg)} msg.textContent=m; msg.dataset.err='1'; }
+    else if(msg) msg.remove();
+    return !m;
+  }
+  form.querySelectorAll('input,select,textarea').forEach(function(el){
+    el.addEventListener(el.tagName==='SELECT'||el.type==='checkbox'?'change':'blur',function(){ if(el.closest('.bad')||el.value) check(el) });
+    if(el.dataset.v==='dni'||el.dataset.v==='tel') el.addEventListener('input',function(){var c=el.value.replace(/\D/g,''); if(c!==el.value) el.value=c});
+  });
+
+  function code(){var a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',r='';for(var i=0;i<5;i++)r+=a[Math.floor(Math.random()*a.length)];return 'KOT26-'+r}
+  function showErr(t){errBox.textContent=t||''; errBox.hidden=!t}
+  function setNote(t){note.textContent=t||''; note.hidden=!t}
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); showErr('');
+    var ok=true, first=null;
+    form.querySelectorAll('input,select,textarea').forEach(function(el){ if(!check(el)){ok=false; first=first||el} });
+    if(!ok){first.focus(); return}
+    if(!DB||!UID){showErr(L().noDb); return}
+    if(!writable){showErr(L().noWrite); return}
+    var fd=new FormData(form), app={codigo:code(), fecha:new Date().toISOString(), estado:'pend'};
+    ['nombres','apellidos','dni','nacimiento','grado','procedencia','apoderado','parentesco','apoDni','telefono','correo','distrito','comentario'].forEach(function(k){app[k]=String(fd.get(k)||'').trim()});
+    sendBtn.disabled=true; sendBtn.textContent=L().sending;
+    var ref=DB.doc('matriculas/'+UID);
+    function attempt(retry){
+      return ref.get().then(function(snap){
+        var list=(snap.exists&&Array.isArray(snap.data().solicitudes))?snap.data().solicitudes.slice():[];
+        list.push(app); if(list.length>40) list=list.slice(-40);
+        return ref.set({solicitudes:list, actualizado:app.fecha});
+      }).catch(function(err){
+        if(retry&&err&&err.code==='unavailable') return new Promise(function(r){setTimeout(r,600+Math.random()*800)}).then(function(){return attempt(false)});
+        throw err;
+      });
+    }
+    attempt(true).then(function(){
+      document.getElementById('doneCode').textContent=app.codigo;
+      form.hidden=true; doneBox.hidden=false; form.reset(); fillSelects(L());
+      form.querySelectorAll('.bad').forEach(function(b){b.classList.remove('bad')}); form.querySelectorAll('.msg').forEach(function(m){m.remove()});
+      document.getElementById('doneClose').focus();
+    }).catch(function(err){
+      var c=err&&err.code;
+      if(c==='invalid_argument'||c==='not_granted'||c==='revoked'){writable=false; showErr(L().noWrite); setNote(L().noWrite)}
+      else if(c==='quota_exceeded') showErr(L().errQuota);
+      else showErr(L().errSend);
+    }).then(function(){sendBtn.disabled=false; sendBtn.textContent=L().send});
+  });
+  document.getElementById('againBtn').addEventListener('click',function(){doneBox.hidden=true; form.hidden=false; form.querySelector('input').focus()});
+
+  /* lists */
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(lang==='es'?'es-PE':'en-GB',{day:'numeric',month:'short',year:'numeric'})}catch(_){return ''}}
+  function el(tag,cls,txt){var x=document.createElement(tag); if(cls)x.className=cls; if(txt!=null)x.textContent=txt; return x}
+  function stKey(s){return s==='ok'||s==='no'?s:'pend'}
+  function renderMine(){
+    var box=document.getElementById('mine'), ul=document.getElementById('mineList'), d=L();
+    box.hidden=!myApps.length; ul.textContent='';
+    myApps.slice().reverse().forEach(function(a){
+      var li=el('li');
+      li.appendChild(el('span','nm',(a.nombres||'')+' '+(a.apellidos||'')));
+      li.appendChild(el('span','pill '+stKey(a.estado),d['st_'+stKey(a.estado)]));
+      li.appendChild(el('span','meta',(d.grades[a.grado]||'')+' · '+(a.codigo||'')+' · '+d.sent+' '+fmtDate(a.fecha)));
+      ul.appendChild(li);
+    });
+  }
+  function adminRows(){
+    var rows=[];
+    allDocs.forEach(function(doc){ (doc.data.solicitudes||[]).forEach(function(a,i){ rows.push({doc:doc.id,i:i,a:a}) }) });
+    rows.sort(function(x,y){return String(y.a.fecha).localeCompare(String(x.a.fecha))});
+    return rows;
+  }
+  function renderAdmin(){
+    if(!ADMIN) return;
+    var ul=document.getElementById('admList'), d=L(), rows=adminRows(); ul.textContent='';
+    var pend=rows.filter(function(r){return stKey(r.a.estado)==='pend'}).length;
+    document.getElementById('admCount').textContent=pend?String(pend):'';
+    document.getElementById('admInfo').textContent=admState==='loading'?d.loading:admState==='stale'?d.stale:d.admInfo+rows.length;
+    document.getElementById('csvBtn').disabled=!rows.length;
+    if(!rows.length&&admState==='ok'){ul.appendChild(el('li','empty',d.adminEmpty));return}
+    rows.forEach(function(r){
+      var a=r.a, li=el('li');
+      li.appendChild(el('span','nm',(a.nombres||'')+' '+(a.apellidos||'')+' — '+(d.grades[a.grado]||'')));
+      var sel=document.createElement('select'); sel.setAttribute('aria-label','Estado / Status');
+      ['pend','ok','no'].forEach(function(k){var o=el('option',null,d['st_'+k]); o.value=k; sel.appendChild(o)});
+      sel.value=stKey(a.estado);
+      sel.addEventListener('change',function(){setStatus(r.doc,a.codigo,sel.value,sel)});
+      li.appendChild(sel);
+      li.appendChild(el('span','meta',(a.codigo||'')+' · '+d.sent+' '+fmtDate(a.fecha)+' · DNI '+(a.dni||'')+' · '+(d.dist[a.distrito]||'')));
+      var m=el('span','meta'); m.appendChild(document.createTextNode((a.apoderado||'')+' ('+(d.paren[a.parentesco]||'')+') · '));
+      var tel=el('a',null,a.telefono||''); if(/^\d{9}$/.test(a.telefono||'')) tel.href='tel:+51'+a.telefono; m.appendChild(tel);
+      m.appendChild(document.createTextNode(' · ')); var ml=el('a',null,a.correo||''); if(/^[^\s@<>"']+@[^\s@<>"']+$/.test(a.correo||'')) ml.href='mailto:'+a.correo; m.appendChild(ml);
+      li.appendChild(m);
+      if(a.comentario) li.appendChild(el('span','meta','“'+a.comentario+'”'));
+      ul.appendChild(li);
+    });
+  }
+  var busy={};
+  function setStatus(docId,cod,val,sel){
+    if(busy[docId]) return; busy[docId]=true; sel.disabled=true;
+    var ref=DB.doc('matriculas/'+docId);
+    ref.get().then(function(snap){
+      if(!snap.exists) return;
+      var list=(snap.data().solicitudes||[]).map(function(x){var y=Object.assign({},x); if(y.codigo===cod) y.estado=val; return y});
+      return ref.update({solicitudes:list});
+    }).catch(function(){ alert(L().errSend) }).then(function(){busy[docId]=false; sel.disabled=false});
+  }
+  document.getElementById('csvBtn').addEventListener('click',function(){
+    var d=L(), cols=['codigo','fecha','estado','nombres','apellidos','dni','nacimiento','grado','procedencia','apoderado','parentesco','apoDni','telefono','correo','distrito','comentario'];
+    var esc=function(v){v=String(v==null?'':v); if(/^[=+\-@]/.test(v)) v="'"+v; return '"'+v.replace(/"/g,'""')+'"'};
+    var lines=[cols.join(',')].concat(adminRows().map(function(r){var a=r.a; return cols.map(function(c){
+      var v=a[c]; if(c==='grado')v=d.grades[v]||v; if(c==='parentesco')v=d.paren[v]||v; if(c==='distrito')v=d.dist[v]||v; if(c==='estado')v=d['st_'+stKey(v)]; return esc(v)}).join(',')}));
+    var data='﻿'+lines.join('\r\n'), name='matriculas-2026.csv';
+    var fallback=function(){var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([data],{type:'text/csv'})); a.download=name; document.body.appendChild(a); a.click(); a.remove()};
+    var dl=window.claude&&window.claude.use?window.claude.use('downloads'):Promise.resolve(null);
+    dl.then(function(x){ if(x) return x.save({filename:name, data:data}); fallback() }).catch(function(){});
+  });
+
+  window.__matLang=function(d){ fillSelects(d); form.querySelectorAll('.msg[data-err]').forEach(function(m){var i=m.closest('.f,.chk').querySelector('input,select,textarea'); if(i) check(i)}); if(!writable) setNote(d.noWrite); else if(!DB&&dbChecked) setNote(d.noDb); renderMine(); renderAdmin(); if(!sendBtn.disabled) sendBtn.textContent=d.send; };
+  var dbChecked=false;
+
+  /* connect to the page's database (only inside claude.ai) */
+  (function connect(){
+    if(!(window.claude&&typeof window.claude.use==='function')){dbChecked=true; setNote(L().noDb); return}
+    Promise.all([window.claude.use('db'),window.claude.use('user')]).then(function(r){
+      DB=r[0]; var user=r[1]; dbChecked=true;
+      if(!DB||!user){setNote(L().noDb); return null}
+      return Promise.all([user.id(),user.canEdit(),user.isOwner()]).then(function(v){
+        UID=v[0]; ADMIN=!!(v[1]||v[2]);
+        if(!UID){setNote(L().noDb); return}
+        DB.doc('matriculas/'+UID).onSnapshot(function(snap){
+          myApps=(snap.exists&&Array.isArray(snap.data().solicitudes))?snap.data().solicitudes:[]; renderMine();
+        },function(){});
+        if(ADMIN){
+          mtabs.hidden=false; renderAdmin();
+          var tm=setTimeout(function(){if(admState==='loading'){admState='stale';renderAdmin()}},10000);
+          DB.collection('matriculas').onSnapshot(function(q){
+            allDocs=q.docs.filter(function(x){return x.exists}).map(function(x){return {id:x.id,data:x.data()||{}}});
+            if(!q.metadata.fromCache){admState='ok'; clearTimeout(tm)}
+            renderAdmin();
+          },function(){admState='stale'; clearTimeout(tm); renderAdmin()});
+        }
+      });
+    }).catch(function(){dbChecked=true; setNote(L().noDb)});
+  })();
 
   /* ---------- size ---------- */
   function resize(){
