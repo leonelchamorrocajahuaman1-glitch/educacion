@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Trend Carousel</title>
+<title>Colegio Kotosh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -20,11 +20,11 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 
 /* ---------- cover ---------- */
 .cover{background:var(--blue)}
-.cover img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.cover img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;filter:grayscale(1) contrast(1.05) brightness(1.18);mix-blend-mode:multiply}
 .cover .t{position:absolute;color:#fff;font-weight:300;text-transform:uppercase;line-height:1.16;pointer-events:none;white-space:nowrap}
 .kick{left:5.4%;top:8.6%;font-size:2.55em;letter-spacing:.01em}
 .design{left:4.6%;top:11.4%;font-size:11.2em;text-transform:none!important;letter-spacing:-.025em;line-height:1!important}
-.script{left:53%;top:5.4%;font-family:"Pinyon Script",cursive;font-weight:400!important;font-size:16em;line-height:1!important;text-transform:none!important}
+.script{left:53%;top:5.4%;font-family:"Pinyon Script",cursive;font-weight:400!important;font-size:12.6em;line-height:1!important;text-transform:none!important;padding-top:.14em}
 .arent{right:6.2%;top:27.6%;font-size:3.05em;text-align:right}
 .found{left:5.2%;top:72.4%;font-size:3.05em}
 .nts{left:78.6%;top:72.4%;font-size:3.05em}
@@ -75,6 +75,10 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 #dots button.act{background:#fff;transform:scale(1.25)}
 #post.light #dots button{background:rgba(0,0,0,.18)}
 #post.light #dots button.act{background:var(--ink)}
+#lang{position:absolute;top:2%;left:50%;transform:translateX(-50%);z-index:6;display:flex;padding:.35em;gap:.2em;border-radius:3em;background:rgba(255,255,255,.88);box-shadow:0 .3em 1.2em rgba(0,0,0,.12);cursor:default}
+#lang button{font:500 1.5em/1 "Lexend","Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;border:0;border-radius:2em;padding:.45em .85em;background:transparent;color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
+#lang button.act{background:var(--accent);color:#fff}
+#lang button:focus-visible,.nav:focus-visible,#dots button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -82,80 +86,73 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
   <div id="track">
 
     <section class="slide cover">
-      <img class="ph" alt="" src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261107_110008_97f7187c-1b33-4746-ac94-dc00336495be.png&w=1600&q=88">
-      <div class="t kick">2026's biggest</div>
-      <div class="t design">Design</div>
-      <img class="ph" alt="" src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261107_110121_f40c2be8-ab96-4085-a3aa-7314ae0f62d6.png&w=1600&q=88">
-      <div class="t script">Trends</div>
-      <div class="t arent">Aren't<br>new</div>
+      <img class="ph" alt="Puente Calicanto, Huánuco" src="img/portada.jpg">
+      <div class="t kick" data-t="kick"></div>
+      <div class="t design" data-t="big"></div>
+      <div class="t script">Huánuco</div>
+      <div class="t arent" data-t="arent"></div>
       <div class="band"><div class="row"></div></div>
-      <div class="t found">They've<br>simply<br>found.</div>
-      <div class="t nts">New<br>things<br>to say</div>
+      <div class="t found" data-t="found"></div>
+      <div class="t nts" data-t="nts"></div>
       <svg class="arrow" viewBox="0 0 100 40"><path d="M0 20H96M78 4l18 16-18 16" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
     </section>
 
     <section class="slide trend" data-i="0">
-      <p class="copy">Security-cam stills, timecodes and tracking boxes turn the act of watching into a visual language. It reads exact, a little uneasy and unmistakably online, which makes it a natural fit for tech, safety and culture brands.</p>
+      <p class="copy" data-t="c0"></p>
       <div class="num">01</div>
-      <h2 class="head"><span><i>Surveillance</i></span><span><i>graphics</i></span></h2>
+      <h2 class="head"><span><i data-t="h0a"></i></span><span><i data-t="h0b"></i></span></h2>
     </section>
 
     <section class="slide trend" data-i="1">
-      <p class="copy">Wobbly lines, odd proportions and quick, unplanned marks bring the warmth back. It has no interest in looking technically perfect; it feels playful, friendly and human, ideal for brands that want to seem looser and more open.</p>
+      <p class="copy" data-t="c1"></p>
       <div class="num">02</div>
-      <h2 class="head"><span><i>Naive</i></span><span><i>illustration</i></span></h2>
+      <h2 class="head"><span><i data-t="h1a"></i></span><span><i data-t="h1b"></i></span></h2>
     </section>
 
     <section class="slide trend" data-i="2">
-      <p class="copy">Smudged type, xerox grain and ripped-paper layouts pull straight from homemade zines and gig flyers. Today that noise is how brands say independent, urgent and not interested in blending in.</p>
+      <p class="copy" data-t="c2"></p>
       <div class="num">03</div>
-      <h2 class="head"><span><i>Punk/</i></span><span><i>grunge</i></span></h2>
+      <h2 class="head"><span><i data-t="h2a"></i></span><span><i data-t="h2b"></i></span></h2>
     </section>
 
     <section class="slide trend" data-i="3">
-      <p class="copy">Things are shot, scanned or drawn, then laid out like a private collection. Instead of one perfect hero image, brands build a world out of what they keep: ingredients, tools, references, products and the small details that show taste.</p>
+      <p class="copy" data-t="c3"></p>
       <div class="num">04</div>
-      <h2 class="head"><span><i>Curated</i></span><span><i>objects</i></span></h2>
+      <h2 class="head"><span><i data-t="h3a"></i></span><span><i data-t="h3b"></i></span></h2>
     </section>
 
     <section class="slide trend" data-i="4">
-      <p class="copy">Stretched faces, warped proportions and digital edits turn a familiar portrait into something you can't scroll past. The distortion adds humour, tension and a touch of the surreal, a sharper way for fashion, music and culture brands to show who they are.</p>
+      <p class="copy" data-t="c4"></p>
       <div class="num">05</div>
-      <h2 class="head"><span><i>Distorted</i></span><span><i>portraits</i></span></h2>
+      <h2 class="head"><span><i data-t="h4a"></i></span><span><i data-t="h4b"></i></span></h2>
     </section>
 
     <section class="slide end">
       <div class="gv"></div><div class="gh"></div>
-      <h2>Which one<br>belongs in your<br>brand's world?</h2>
-      <p>Spotting a trend is easy. Deciding what to take, what to skip and how to make it feel like yours is the real design work.</p>
-      <div class="cta">Let's talk<svg viewBox="0 0 200 80" preserveAspectRatio="none"><path pathLength="1" d="M150 14C112 2 34 6 12 30c-18 20 22 38 82 38 62 0 104-12 102-32C194 16 140 8 96 10 58 12 28 20 22 28"/></svg></div>
-      <div class="brand">HALFTONE.</div>
+      <h2 data-t="endh"></h2>
+      <p data-t="endp"></p>
+      <div class="cta"><span data-t="cta"></span><svg viewBox="0 0 200 80" preserveAspectRatio="none"><path pathLength="1" d="M150 14C112 2 34 6 12 30c-18 20 22 38 82 38 62 0 104-12 102-32C194 16 140 8 96 10 58 12 28 20 22 28"/></svg></div>
+      <div class="brand">COLEGIO KOTOSH.</div>
     </section>
 
   </div>
   <button class="nav" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button class="nav" id="next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
   <div id="dots"></div>
+  <div id="lang" role="group" aria-label="Idioma / Language"><button data-l="es">ES</button><button data-l="en">EN</button></div>
 </div>
 
 <script>
 (function(){
-  var SHEETS = {
-    A:{url:"https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261107_110010_4359ec6f-574d-413b-a403-0325ee9182ab.png&w=2336&q=88",
-       W:2336,H:1744,cols:[[20,577],[599,1156],[1179,1737],[1757,2317]],rows:[[20,566],[587,1141],[1162,1719]]},
-    B:{url:"https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261107_110011_7adeada8-687e-4c85-a9ff-d99b317441a8.png&w=2336&q=88",
-       W:2336,H:1744,cols:[[22,576],[598,1157],[1178,1739],[1760,2314]],rows:[[19,573],[592,1147],[1164,1720]]}
-  };
+  /* Fotos reales de Huánuco en img/ (Wikimedia Commons; autores y licencias en CREDITOS.md) */
+  function src(id){return 'img/'+id+'.jpg';}
 
+  /* cover-crop one photo into an element, focus fx/fy */
   function paint(el,id,ew,eh,fx,fy){
     if(fx==null)fx=.5; if(fy==null)fy=.5;
-    var s=SHEETS[id[0]], n=+id.slice(1), c=s.cols[n%4], r=s.rows[Math.floor(n/4)];
-    var x=c[0]+4, y=r[0]+4, w=c[1]-c[0]-8, h=r[1]-r[0]-8, a=ew/eh;
-    if(w/h>a){var nw=h*a; x+=(w-nw)*fx; w=nw;}
-    else{var nh=w/a; y+=(h-nh)*fy; h=nh;}
-    el.style.backgroundImage='url("'+s.url+'")';
-    el.style.backgroundSize=(s.W/w*100)+'% '+(s.H/h*100)+'%';
-    el.style.backgroundPosition=(x/(s.W-w)*100)+'% '+(y/(s.H-h)*100)+'%';
+    el.style.backgroundImage='url("'+src(id)+'")';
+    el.style.backgroundSize='cover';
+    el.style.backgroundPosition=(fx*100)+'% '+(fy*100)+'%';
   }
 
   var post=document.getElementById('post'), track=document.getElementById('track');
@@ -164,7 +161,7 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 
   /* ---------- cover band ---------- */
   var band=post.querySelector('.band'), row=band.querySelector('.row');
-  var CELLS=['A1','B0','B8','A4','B9','A10','B11','A6'];
+  var CELLS=['calicanto','leoncio','negritos','kotosh','lechuzas','sebastian','durmiente','malecon'];
   CELLS.concat(CELLS).forEach(function(id){
     var d=document.createElement('div'); d.className='card'; paint(d,id,1,1); row.appendChild(d);
   });
@@ -182,13 +179,13 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 
   /* ---------- collages ---------- */
   var COLL=[
-    {p:[['A0',9,25,25.5,34,.5,.3],['A3',18,53,15,19],['A2',66,20,25,27],['A1',50,36,27,36,.5,.4]],
+    {p:[['kotosh',9,25,25.5,34,.5,.3],['ceramica',18,53,15,19],['pampa',66,20,25,27],['piedras',50,36,27,36,.5,.4]],
      extra:'<div class="deco sq" style="left:33%;top:46%;width:9%;height:9%"></div>'},
-    {p:[['A6',8.5,23,22,30,.5,.25],['A5',27,40,21,27],['A7',51,23,32,41],['A4',69,57,25,34]],
+    {p:[['botanico',8.5,23,22,30,.5,.25],['lechuzas',27,40,21,27],['durmiente',51,23,32,41],['lauricocha',69,57,25,34]],
      extra:'<svg class="deco scrib" style="left:21%;top:20%;width:17%;height:14%" viewBox="0 0 100 80" preserveAspectRatio="none"><g fill="none" stroke="#f3cf2a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 60C30 10 40 70 55 25S80 50 92 12"/><path d="M14 72C34 30 52 66 68 30"/></g></svg>'},
-    {p:[['A8',8,23,24,36],['A9',28.5,29,24,40,.5,.35],['A11',69,20,19,25],['A10',63,54,27,36]]},
-    {p:[['B0',8,43.5,36,22],['B1',33,26,22,31],['B3',77,21,15.5,18],['B2',63,51,28,32]]},
-    {p:[['B4',8,22,29,32,.35,.4],['B5',36,40,22,27],['B6',64,20,30,31],['B7',69,52,27,44,.5,.3]]}
+    {p:[['graffiti',8,23,24,36],['danzante',28.5,29,24,40,.5,.35],['comparsa',69,20,19,25],['negritos',63,54,27,36]]},
+    {p:[['calicanto',8,43.5,36,22],['sebastian',33,26,22,31],['plaza',77,21,15.5,18],['calle',63,51,28,32]]},
+    {p:[['leoncio',8,22,29,32,.35,.4],['amarilis',36,40,22,27],['malecon',64,20,30,31],['tingo',69,52,27,44,.5,.3]]}
   ];
   post.querySelectorAll('.trend').forEach(function(sl){
     var c=COLL[+sl.dataset.i], ref=sl.querySelector('.num');
@@ -232,7 +229,7 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
   var sw=null;
   post.addEventListener('pointerdown',function(e){
     if(e.button>0) return;
-    if(e.target.closest('.nav,#dots,.piece')) return;
+    if(e.target.closest('.nav,#dots,.piece,#lang')) return;
     sw={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),lock:null};
     try{post.setPointerCapture(e.pointerId)}catch(_){}
   });
@@ -292,6 +289,59 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
     p.addEventListener('pointercancel',up);
   },true);
 
+
+  /* ---------- idioma / language ---------- */
+  var T={
+    es:{
+      kick:"Admisión 2026", big:"Aprender", arent:"Con raíces<br>propias",
+      found:"Educamos<br>con<br>identidad.", nts:"Y miramos<br>al<br>futuro",
+      c0:"Kotosh, el Templo de las Manos Cruzadas y Huánuco Pampa son nuestra primera aula. Enseñamos historia donde ocurrió, para que cada estudiante sepa de dónde viene y se sienta orgulloso de contarlo.",
+      h0a:"Identidad", h0b:"cultural",
+      c1:"De la Cueva de las Lechuzas al Jardín Botánico de Tingo María, la ciencia se aprende observando. Experimentos, salidas de campo y preguntas reales despiertan una curiosidad que ningún libro reemplaza.",
+      h1a:"Ciencia y", h1b:"naturaleza",
+      c2:"La Danza de los Negritos, la música y el color de nuestras fiestas entran al salón. El arte les da a los estudiantes voz propia, confianza para expresarse y orgullo por lo que nos hace únicos.",
+      h2a:"Arte y", h2b:"tradición",
+      c3:"El Puente Calicanto, la Plaza de Armas y nuestras calles se convierten en lecciones de historia, ciudadanía y convivencia. Aprender la ciudad es aprender a cuidarla y a participar en ella.",
+      h3a:"Ciudad", h3b:"que enseña",
+      c4:"Inglés, tecnología, proyectos y preparación preuniversitaria con docentes que acompañan de cerca. Formamos jóvenes que conocen su tierra y están listos para llevarla a cualquier parte del mundo.",
+      h4a:"Mirada al", h4b:"futuro",
+      endh:"¿Listos para<br>aprender en<br>Huánuco?",
+      endp:"Las matrículas 2026 ya están abiertas. Ven a conocer nuestras aulas, a nuestros docentes y una forma de aprender que nace de nuestra tierra.",
+      cta:"Visítanos", prev:"Anterior", next:"Siguiente", slide:"Diapositiva "
+    },
+    en:{
+      kick:"Admissions 2026", big:"Learning", arent:"With roots<br>of its own",
+      found:"We teach<br>with<br>identity.", nts:"And look<br>to the<br>future",
+      c0:"Kotosh, the Temple of the Crossed Hands and Huánuco Pampa are our first classroom. We teach history where it happened, so every student knows where they come from and is proud to tell it.",
+      h0a:"Cultural", h0b:"identity",
+      c1:"From the Owl Cave to the Botanical Garden in Tingo María, science is learned by observing. Experiments, field trips and real questions spark a curiosity that no textbook can replace.",
+      h1a:"Science &", h1b:"nature",
+      c2:"The Dance of the Negritos, the music and the colour of our festivals come into the classroom. Art gives students their own voice, the confidence to express themselves and pride in what makes us unique.",
+      h2a:"Arts &", h2b:"tradition",
+      c3:"The Calicanto Bridge, the main square and our streets become lessons in history, citizenship and living together. Learning the city means learning to care for it and take part in it.",
+      h3a:"A city", h3b:"that teaches",
+      c4:"English, technology, projects and university preparation, with teachers who stay close. We raise young people who know their land and are ready to take it anywhere in the world.",
+      h4a:"Eyes on", h4b:"the future",
+      endh:"Ready to<br>learn in<br>Huánuco?",
+      endp:"Enrolment for 2026 is now open. Come and see our classrooms, meet our teachers and discover a way of learning rooted in our land.",
+      cta:"Visit us", prev:"Previous", next:"Next", slide:"Slide "
+    }
+  };
+  var lang='es';
+  try{var saved=localStorage.getItem('lang'); if(saved==='en'||saved==='es') lang=saved;}catch(_){}
+  var langBtns=[].slice.call(document.querySelectorAll('#lang button'));
+  function setLang(l){
+    lang=l; var d=T[l];
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-t]').forEach(function(el){el.innerHTML=d[el.dataset.t]});
+    langBtns.forEach(function(b){var on=b.dataset.l===l; b.classList.toggle('act',on); b.setAttribute('aria-pressed',on)});
+    document.getElementById('prev').setAttribute('aria-label',d.prev);
+    document.getElementById('next').setAttribute('aria-label',d.next);
+    [].forEach.call(document.querySelectorAll('#dots button'),function(b,k){b.setAttribute('aria-label',d.slide+(k+1))});
+    try{localStorage.setItem('lang',l)}catch(_){}
+  }
+  langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+
   /* ---------- size ---------- */
   function resize(){
     S=Math.min(innerWidth,innerHeight);
@@ -300,6 +350,7 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
     place(false);
   }
   addEventListener('resize',resize);
+  setLang(lang);
   resize();
   go(0);
 })();
