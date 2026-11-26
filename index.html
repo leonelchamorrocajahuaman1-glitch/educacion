@@ -85,6 +85,24 @@ body{font-family:"Lexend","Helvetica Neue",Arial,sans-serif;color:var(--ink);-we
 #lang button.act{background:var(--accent);color:#fff}
 #lang button:focus-visible,.nav:focus-visible,#dots button:focus-visible,#openMat:focus-visible,.cta:focus-visible,.brand:focus-visible,.cover .arrow:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
+/* ---------- WhatsApp ---------- */
+.wa-fab{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;align-items:center;gap:0;height:58px;min-width:58px;padding:0 15px;border-radius:29px;background:#25d366;color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.22);font:500 15px "Lexend",sans-serif;transition:gap .3s,padding .3s,transform .15s,background .2s;overflow:hidden;white-space:nowrap}
+.wa-fab svg{width:28px;height:28px;flex:none}
+.wa-fab svg .b,.btnwa svg .b{fill:none;stroke:#fff;stroke-width:1.7;stroke-linejoin:round}
+.wa-fab svg .h,.btnwa svg .h{fill:#fff}
+.wa-fab span{max-width:0;overflow:hidden;transition:max-width .35s ease}
+.wa-fab:hover,.wa-fab:focus-visible{gap:10px;padding:0 20px 0 15px;background:#1ebe5b}
+.wa-fab:hover span,.wa-fab:focus-visible span{max-width:240px}
+.wa-fab:active{transform:scale(.95)}
+.wa-fab:focus-visible{outline:2px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px #25d366}
+.wa-fab::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(37,211,102,.55);animation:waPulse 2.6s ease-out 1.5s 3;pointer-events:none}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}100%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+.btnwa{display:inline-flex;align-items:center;gap:8px;font:500 15px "Lexend",sans-serif;border-radius:24px;padding:11px 20px;background:#25d366;color:#fff;text-decoration:none;transition:background .2s,transform .15s}
+.btnwa:hover{background:#1ebe5b}.btnwa:active{transform:scale(.97)}
+.btnwa svg{width:20px;height:20px}
+.walink{color:#128c4a;font-weight:500;text-decoration:underline;text-underline-offset:2px}
+@media (prefers-reduced-motion:reduce){.wa-fab::after{animation:none}}
+
 /* ---------- matrícula (modal; px-based so it stays readable on phones) ---------- */
 .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(21,21,21,.5);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);user-select:text;-webkit-user-select:text;animation:fadeIn .25s ease}
 .modal[hidden]{display:none}
@@ -219,6 +237,8 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
   <div id="topbar"><div id="lang" role="group" aria-label="Idioma / Language"><button type="button" data-l="es">ES</button><button type="button" data-l="en">EN</button></div><button type="button" id="openMat" data-t="mBtn"></button></div>
 </div>
 
+<a id="waFab" class="wa-fab" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="b" d="M12 2.8a9.2 9.2 0 0 0-7.9 13.9L2.8 21.2l4.6-1.2A9.2 9.2 0 1 0 12 2.8z"/><path class="h" d="M8.6 7.4c.3-.3.8-.3 1 .1l.9 1.8c.1.3.1.6-.1.8l-.6.7c.6 1.3 1.6 2.3 2.9 2.9l.7-.6c.2-.2.5-.2.8-.1l1.8.9c.4.2.4.7.1 1l-.8.8c-.6.6-1.6.7-2.4.3a10.4 10.4 0 0 1-4.9-4.9c-.4-.8-.3-1.8.3-2.4z"/></svg><span data-t="waFab"></span></a>
+
 <div id="mat" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="matTitle">
   <div class="mbox">
     <button type="button" class="mclose" id="matClose" data-ta="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -230,7 +250,7 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
     </div>
 
     <div id="paneForm">
-      <p class="mintro" data-t="mIntro"></p>
+      <p class="mintro"><span data-t="mIntro"></span> <a class="walink" id="waForm" target="_blank" rel="noopener" data-t="waForm"></a></p>
       <p class="mnote" id="matNote" hidden></p>
       <form id="matForm" novalidate>
         <fieldset>
@@ -265,7 +285,7 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
         <h4 data-t="doneT"></h4>
         <p><span data-t="doneP"></span> <strong id="doneCode"></strong></p>
         <p class="sub" data-t="doneP2"></p>
-        <div class="mact"><button type="button" class="btns" id="againBtn" data-t="again"></button><button type="button" class="btnp" id="doneClose" data-t="close"></button></div>
+        <div class="mact"><a class="btnwa" id="waDone" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="b" d="M12 2.8a9.2 9.2 0 0 0-7.9 13.9L2.8 21.2l4.6-1.2A9.2 9.2 0 1 0 12 2.8z"/><path class="h" d="M8.6 7.4c.3-.3.8-.3 1 .1l.9 1.8c.1.3.1.6-.1.8l-.6.7c.6 1.3 1.6 2.3 2.9 2.9l.7-.6c.2-.2.5-.2.8-.1l1.8.9c.4.2.4.7.1 1l-.8.8c-.6.6-1.6.7-2.4.3a10.4 10.4 0 0 1-4.9-4.9c-.4-.8-.3-1.8.3-2.4z"/></svg><span data-t="waDone"></span></a><button type="button" class="btns" id="againBtn" data-t="again"></button><button type="button" class="btnp" id="doneClose" data-t="close"></button></div>
       </div>
       <section id="mine" hidden>
         <h4 data-t="mine"></h4>
@@ -446,6 +466,7 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
       endh:"¿Listos para<br>aprender en<br>Huánuco?",
       endp:"Las matrículas 2026 ya están abiertas. Ven a conocer nuestras aulas, a nuestros docentes y una forma de aprender que nace de nuestra tierra.",
       cta:"Matricúlate", prev:"Anterior", next:"Siguiente", slide:"Diapositiva ", home:"Volver a la portada", close:"Cerrar",
+      waFab:"¿Dudas? Escríbenos", waForm:"¿Tienes dudas? Escríbenos por WhatsApp.", waDone:"Avisar por WhatsApp", waMsg:"Hola, quisiera información sobre la matrícula 2026 en el Colegio Kotosh.", waMsgCode:"Hola, acabo de enviar la solicitud de matrícula con el código ",
       mBtn:"Matrícula", mKick:"Admisión 2026", mTitle:"Ficha de matrícula",
       mIntro:"Completa los datos del estudiante y de su apoderado. Te llamaremos en un máximo de 48 horas para confirmar la vacante y coordinar una visita al colegio.",
       sStudent:"Datos del estudiante", fNombres:"Nombres", fApellidos:"Apellidos", fDni:"DNI del estudiante", fNac:"Fecha de nacimiento",
@@ -484,6 +505,7 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
       endh:"Ready to<br>learn in<br>Huánuco?",
       endp:"Enrolment for 2026 is now open. Come and see our classrooms, meet our teachers and discover a way of learning rooted in our land.",
       cta:"Enrol now", prev:"Previous", next:"Next", slide:"Slide ", home:"Back to the cover", close:"Close",
+      waFab:"Questions? Message us", waForm:"Any questions? Message us on WhatsApp.", waDone:"Let us know on WhatsApp", waMsg:"Hello, I would like information about 2026 enrolment at Colegio Kotosh.", waMsgCode:"Hello, I have just sent the enrolment application with code ",
       mBtn:"Enrol", mKick:"Admissions 2026", mTitle:"Enrolment form",
       mIntro:"Fill in the student's and the parent's or guardian's details. We'll call you within 48 hours to confirm the place and arrange a visit to the school.",
       sStudent:"Student details", fNombres:"First names", fApellidos:"Last names", fDni:"Student's ID (DNI)", fNac:"Date of birth",
@@ -519,10 +541,25 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
     document.getElementById('next').setAttribute('aria-label',d.next);
     document.querySelectorAll('[data-ta]').forEach(function(el){el.setAttribute('aria-label',d[el.dataset.ta])});
     if(window.__matLang) window.__matLang(d);
+    if(window.__setWa) window.__setWa();
     [].forEach.call(document.querySelectorAll('#dots button'),function(b,k){b.setAttribute('aria-label',d.slide+(k+1))});
     try{localStorage.setItem('lang',l)}catch(_){}
   }
   langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+
+  /* ---------- WhatsApp ---------- */
+  /* Número del colegio: código de país + celular, solo dígitos. 999999999 es un ejemplo: cámbialo. */
+  var WHATSAPP='51999999999';
+  function waUrl(text){return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(text)}
+  var lastCode='';
+  function setWa(){
+    var d=T[lang];
+    document.getElementById('waFab').href=waUrl(d.waMsg);
+    document.getElementById('waFab').setAttribute('aria-label',d.waFab+' (WhatsApp)');
+    document.getElementById('waForm').href=waUrl(d.waMsg);
+    document.getElementById('waDone').href=waUrl(lastCode?d.waMsgCode+lastCode+'.':d.waMsg);
+  }
+  window.__setWa=setWa;
 
   /* ---------- matrícula ---------- */
   var mat=document.getElementById('mat'), form=document.getElementById('matForm'), sendBtn=document.getElementById('matSend');
@@ -615,7 +652,7 @@ legend{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:5
       });
     }
     attempt(true).then(function(){
-      document.getElementById('doneCode').textContent=app.codigo;
+      document.getElementById('doneCode').textContent=app.codigo; lastCode=app.codigo; setWa();
       form.hidden=true; doneBox.hidden=false; form.reset(); fillSelects(L());
       form.querySelectorAll('.bad').forEach(function(b){b.classList.remove('bad')}); form.querySelectorAll('.msg').forEach(function(m){m.remove()});
       document.getElementById('doneClose').focus();
